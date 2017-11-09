@@ -1,0 +1,10 @@
+.arc{
+	stroke:black;
+	cursor:pointer;
+	&:hover{
+		path{
+			fill:$gray-light !important;			
+		}
+
+	}
+}

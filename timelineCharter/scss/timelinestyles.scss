@@ -1,0 +1,42 @@
+.page-legend{
+    width:100%;
+	height:auto;     
+    .legendItems-poll{
+		font-size:$font-size-sm;
+		margin-right: 15px;
+	    .poll-legend-bar{
+			width:12px;
+			height:12px;
+			margin-top:4px;
+			margin-right:5px;		    
+	    }
+	    .poll-legend-text{
+		    
+	    }
+    }
+ }
+ .poll-chart-label{
+	 text-transform: uppercase;
+	 font-weight: 600;
+	 margin-bottom: 2px;
+	 margin-top:2px;
+	 color:black;
+	 line-height: 1;
+
+ }
+ .poll-chart-sample{
+	 text-transform: none;
+	 font-weight:400;
+	 font-size:$font-size-xs;
+	 line-height: 1.2;
+
+ }
+ .area{
+	 opacity:0.2;
+ }
+ 
+ .poll-bar-label{
+	 fill:white;
+	 font-size: $font-size-sm;
+	 font-weight: 700;
+ }

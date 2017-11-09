@@ -1,0 +1,12 @@
+{
+    "dev":{
+        "bucket": "",
+        "folder": "",
+        "region": "us-east-1"
+    },
+    "dist":{
+        "bucket": "",
+        "folder": ""  ,
+        "region": "us-east-1"   
+    }
+}

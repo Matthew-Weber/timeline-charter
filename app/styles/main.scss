@@ -1,0 +1,35 @@
+@import "variables";
+@import "fonts";
+
+// bower:scss
+@import "bower_components/charterCommons/scss/color.scss";
+@import "bower_components/charterCommons/scss/chartstyles.scss";
+// endbower
+
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+@import "bower_components/components-font-awesome/scss/font-awesome.scss";
+
+//components
+@import "components/querry-strings";
+@import "components/utilities";
+@import "components/header";
+@import "components/footer";
+@import "components/type";
+@import "components/buttons";
+@import "components/forms";
+@import "components/custom-forms";
+@import "components/navs";
+@import "components/no-ui-slider";
+@import "components/tooltip";
+
+@import "piestyles";
+
+.main{
+    padding-top: 77px;
+    overflow-x: hidden;
+    @include clearfix();
+}
+
+
+
+

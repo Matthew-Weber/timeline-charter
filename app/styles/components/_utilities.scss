@@ -1,0 +1,33 @@
+.square{
+    border-radius: 0 !important;
+}
+
+.uppercase{
+    text-transform: uppercase !important;
+}
+
+//for changing the backgrounds around.
+.background-gray-dark{
+    background-color: $gray-dark;
+    color: #FFF !important;
+    .h1, .h2, .h3, .h4, .h5, .h6{
+        color: #FFF !important;
+    }
+}
+.background-gray{
+    background-color: $gray;
+    color: #FFF !important;
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6{
+        color: #FFF !important;
+    }
+}
+.background-gray-light{
+    background-color: $gray-light;
+}
+.background-gray-lighter{
+    background-color: $gray-lighter;
+}
+.background-gray-lightest{
+    background-color: $gray-lightest;
+}

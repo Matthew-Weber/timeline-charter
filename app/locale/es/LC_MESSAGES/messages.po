@@ -1,0 +1,18 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "language_id"
+msgstr "es"
+
+msgid "en"
+msgstr "es"
+
+msgid "headline"
+msgstr "Something in Spanish"
+
+msgid "encoded_headline"
+msgstr "Something%20in%20Spanish"
+
+msgid "description"
+msgstr "A Spanish description"

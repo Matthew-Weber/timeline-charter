@@ -1,0 +1,17 @@
+{
+  "name": "pie-charter",
+  "description": "Reuters pie chart maker",
+  "main": [
+    "scss/piestyles.scss",
+    "dist/js/pieCharter.js",
+    "jst/*.html",
+    "chartBlocks/*.md"    
+  ],
+  "dependencies": {
+    "charter-commons": "https://github.com/Matthew-Weber/charter-commons.git#*"
+  },   
+  "version": "0.0.0",
+   "ignore": [
+    "/.*"
+  ]
+}

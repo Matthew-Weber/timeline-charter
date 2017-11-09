@@ -1,0 +1,57 @@
+.header.navbar{
+    height: 68px;
+    img.logo{
+        height:43px;
+    }
+
+    .navbar-toggler{
+        margin:.75rem .75rem 0 0;
+        padding:0;
+    }
+    .page-title{
+        font-family: $font-family-knowledge;
+        font-size: $font-size-lg;
+        font-weight: 700;
+        border-left: 1px solid $gray-border;
+        padding: 0 0 0 17px;
+        margin: 0 0 0 17px;
+        height: 40px;
+        line-height: 40px;
+        color: #FFFFFF;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    a{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .social{
+        margin-top: 10px;
+        li{
+            a{
+                color: $gray-light;
+                &:hover{
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) { 
+        height:auto;
+        img.logo{
+            height:22px;
+        }
+        .page-title{
+            font-size: $font-size-base;
+            height:25px;
+            line-height:30px;
+        }
+        .social{
+            margin-top:8px;
+        }
+    }
+
+}
