@@ -103,7 +103,7 @@ Reuters.Graphics.timeLineCharter = Backbone.View.extend({
 				.style("stroke", function(d) { return self.colorScale(d.name); })			
 				.style("opacity",  1);			
 
-			self.lineChart.selectAll(".tipCircle")
+			self.AnimateLineChart.selectAll(".tipCircle")
 				.classed("highlight", function(d){
 					if (self.closestDates.indexOf(self.timelineFormatter(d.date)) > -1 ){
 						return true
@@ -157,10 +157,10 @@ Reuters.Graphics.timeLineCharter = Backbone.View.extend({
 				self.AnimateLineChart = self.svg.selectAll(".animateLineChart")
 					.data(currentData, function(d) {return d.name; })
 										
-			self.lineChart.selectAll(".tipCircle")
+			self.AnimateLineChart.selectAll(".tipCircle")
 				.classed("highlight", function(d,i){
-					if (i==index+1){
-						return true;		
+					if (self.timelineFormatter(d.date) == self.timelineFormatter(closestData) ){
+						return true
 					}
 					return false;
 				});				
@@ -241,13 +241,61 @@ Reuters.Graphics.timeLineCharter = Backbone.View.extend({
 				chartSelf.closestDates.push( chartSelf.timelineFormatter(closestData));								
 			})
 			
-			chartSelf.lineChart.selectAll(".tipCircle")
-				.classed("highlight", function(d){
-					if (chartSelf.closestDates.indexOf(chartSelf.timelineFormatter(d.date)) > -1 ){
-						return true
-					}
-					return false
-				});
+			chartSelf.jsonData.forEach(function(d){
+				d.timelineValues = d.values.filter(function(d){
+					return chartSelf.closestDates.indexOf(chartSelf.timelineFormatter(d.date)) > -1
+				})
+
+			})
+
+
+		chartSelf.AnimateLineChart.selectAll(".tipCircle")
+			.data( function(d) {return d.timelineValues;})
+			.enter()
+			.append("circle")
+			.attr("class","tipCircle")
+			.attr("c"+chartSelf.xOrY, function(d,i){
+				
+				var theScale = 'category';
+				if (chartSelf.hasTimeScale) {
+					theScale = 'date';
+				}
+				if (chartSelf.xScaleColumn){
+					theScale = chartSelf.xScaleColumn
+				}					
+				return chartSelf.scales.x(d[theScale]);
+			})
+			.attr("c"+chartSelf.yOrX,function(d,i){
+		    	if (chartSelf.chartLayout == "stackTotal"){
+					if (!d.y1Total){return chartSelf.scales.y(0)}	
+		    		return chartSelf.scales.y(d.y1Total); 		    	
+		    	}else {
+			    	if (chartSelf.chartLayout == "stackPercent"){
+				    	if (!d.y1Percent){return chartSelf.scales.y(0)} 
+				    	return chartSelf.scales.y(d.y1Percent);
+				    }else{
+					    if (!d[chartSelf.dataType]){return chartSelf.scales.y(0)}
+					    return chartSelf.scales.y(d[chartSelf.dataType]);
+					}		
+				}
+			})
+			.attr("r",function (d,i) {
+				if ( isNaN(d[chartSelf.dataType])){return 0;} 
+				 return 5;
+			})
+			.style('opacity', function(d){
+				if (chartSelf.markDataPoints){
+					return 1;
+				}
+				return 0;
+			})
+			.style("fill", function(d) { return chartSelf.colorScale(d.name); })//1e-6
+			.classed("highlight", function(d){
+				if (chartSelf.closestDates.indexOf(chartSelf.timelineFormatter(d.date)) > -1 ){
+					return true
+				}
+				return false
+			});
 
 		    self.trigger("renderChart:end")
 		    
@@ -263,6 +311,45 @@ Reuters.Graphics.timeLineCharter = Backbone.View.extend({
 				.transition()
 				.duration(1000)
 				.attr("d", function(d) {return chartSelf.line(d.values[0]); })
+				
+				
+		chartSelf.AnimateLineChart
+			.data(chartSelf.jsonData, function(d) {return d.name;})
+	        .selectAll(".tipCircle")
+	        .data( function(d) {return d.timelineValues; })
+	        .transition()
+	        .duration(1000)
+			.attr("c"+chartSelf.xOrY, function(d,i){
+				
+				var theScale = 'category';
+				if (chartSelf.hasTimeScale) {
+					theScale = 'date';
+				}
+				if (chartSelf.xScaleColumn){
+					theScale = chartSelf.xScaleColumn
+				}					
+				return chartSelf.scales.x(d[theScale]);
+			})
+			.attr("c"+chartSelf.yOrX,function(d,i){
+		    	if (chartSelf.chartLayout == "stackTotal"){
+					if (!d.y1Total){return chartSelf.scales.y(0)}	
+		    		return chartSelf.scales.y(d.y1Total); 		    	
+		    	}else {
+			    	if (chartSelf.chartLayout == "stackPercent"){
+				    	if (!d.y1Percent){return chartSelf.scales.y(0)} 
+				    	return chartSelf.scales.y(d.y1Percent);
+				    }else{
+					    if (!d[chartSelf.dataType]){return chartSelf.scales.y(0)}
+					    return chartSelf.scales.y(d[chartSelf.dataType]);
+					}		
+				}
+			})
+			.attr("r",function (d,i) {
+				if ( isNaN(d[chartSelf.dataType])){return 0;} 
+				 return 5;
+			})
+
+				
 			
 		    self.trigger("update:end")
 		    
