@@ -1,0 +1,52 @@
+
+
+.timeline-item{
+	margin-bottom:60px;
+	color:$gray-light;
+
+	.timeline-date{
+		font-weight: 700;
+		font-family:$font-family-knowledge;
+	}
+	&.active{
+		color:black;
+	}
+}
+.timline-module-container{
+	position: relative;
+}
+.timeline-stick{
+	position:fixed;
+	top:50px;
+	padding-top:10px;
+	z-index: 10;
+	background:white;
+	left:0px;
+	width:100%;
+	&.unstick{
+		position:absolute;
+		top:auto;
+		left:auto;
+		bottom:0px;
+	}
+}
+.animateLine {
+  fill: none;
+  stroke: #231F20;
+  stroke-linejoin: round;
+  stroke-linecap:round;
+} 
+.animateLineChart {
+  stroke-width:3px;
+  transition:stroke-width 0.5s, opacity 0.5s;
+  -webkit-transition:stroke-width 0.5s, opacity 0.5s;
+	.tipCircle{
+		&.highlight{
+			fill:none !important;
+			stroke:black !important;
+			stroke-width:1px !important;
+		}
+	}
+} 
+
+
