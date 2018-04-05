@@ -32,7 +32,7 @@ gulp.task('styles', () => {
 gulp.task('templates', () => {
     return gulp.src('app/templates/**/*.html')
         .pipe($.templateCompile({
-            namespace: "Reuters.Graphics.pieCharter.Template",
+            namespace: "Reuters.Graphics.timelineCharter.Template",
             name: function(file){
                 return file.relative.split('.')[0];
             },
@@ -326,28 +326,28 @@ gulp.task('build-both', ['build-app'], () => {
 
 gulp.task('copyjs', function() {
    gulp.src('app/scripts/charter/**/*.js')
-   .pipe(gulp.dest('pieCharter/js/src'));
+   .pipe(gulp.dest('timelineCharter/js/src'));
 });
 
 gulp.task('copyscss', function() {
-   gulp.src('app/styles/**/**pie**.scss')
-   .pipe(gulp.dest('pieCharter/scss'));
+   gulp.src('app/styles/**/**timeline**.scss')
+   .pipe(gulp.dest('timelineCharter/scss'));
 });
 
 gulp.task('copyjst', function() {
    gulp.src('app/templates/**/**.html')
-   .pipe(gulp.dest('pieCharter/jst'));
+   .pipe(gulp.dest('timelineCharter/jst'));
 });
 
 gulp.task('copyjsdist', function() {
-   gulp.src('dist/en/scripts/pieCharter.js')
-   .pipe(gulp.dest('pieCharter/dist/js'));
+   gulp.src('dist/en/scripts/timelineCharter.js')
+   .pipe(gulp.dest('timelineCharter/dist/js'));
 });
 
 gulp.task('copyblock', function() {
    gulp.src('app/scripts/main.js')
-   .pipe($.rename('pieCharterBlock.md'))
-   .pipe(gulp.dest('pieCharter/chartBlocks/'));
+   .pipe($.rename('timelineCharterBlock.md'))
+   .pipe(gulp.dest('timelineCharter/chartBlocks/'));
 });
 
 //need minified css
