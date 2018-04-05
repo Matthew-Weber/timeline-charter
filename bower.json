@@ -12,7 +12,7 @@
     "charter-commons": "https://github.com/Matthew-Weber/charter-commons.git#*",
     "basic-charter": "https://github.com/Matthew-Weber/basic-charter.git#*"
   },   
-  "version": "0.0.3",
+  "version": "0.0.4",
    "ignore": [
     "/.*"
   ]
